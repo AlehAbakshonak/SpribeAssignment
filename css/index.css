@@ -3,20 +3,24 @@ body {
     display: flex;
     overflow: hidden;
     flex-direction: column;
-    height: 100dvh;
+    height: calc(var(--vh, 1vh) * 100); /*workaround for mobile overlays*/
     background-color: #020a0f;
+}
+
+:root {
+    --vh: 1vh;
 }
 
 header, footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 5rem;
+    height: 5em;
     background-color: #020a0f;
 }
 
 canvas {
-    height: calc(100dvh - 10rem);
+    height: calc(100vh - 10em);
     flex: 1;
     display: block;
 }

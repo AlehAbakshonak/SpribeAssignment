@@ -5,10 +5,12 @@ import {assetMap} from "../assets/assetMap.js";
 import {SlotContainer} from "./core/SlotContainer.js";
 
 import {ExpoScaleEase} from "./lib/gsap_esm/EasePack.js";
+import {debounce, setProperInnerHeight} from "./misc.js";
 
 gsap.registerPlugin(ExpoScaleEase);
 
 const canvas = document.getElementById("canvas");
+setProperInnerHeight();
 
 const app = new PIXI.Application({
    background: '#1099bb',
@@ -34,12 +36,14 @@ function init(assets) {
 
    console.log(document.body.style.scale);
 
-   window.addEventListener('resize', () => {
+   window.addEventListener('resize', debounce(3, () => {
       const newWidth = canvas.clientWidth * window.devicePixelRatio;
       const newHeight = canvas.clientHeight * window.devicePixelRatio;
       app.renderer.resize(newWidth, newHeight);
       slotContainer.resize(newWidth, newHeight);
-   });
+
+      setProperInnerHeight();
+   }));
 
 
    const playButton = document.getElementById("playButton");
