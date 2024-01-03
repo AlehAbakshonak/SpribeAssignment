@@ -12,8 +12,8 @@ const canvas = document.getElementById("canvas");
 
 const app = new PIXI.Application({
    background: '#1099bb',
-   width: canvas.clientWidth,
-   height: canvas.clientHeight,
+   width: canvas.clientWidth * window.devicePixelRatio,
+   height: canvas.clientHeight * window.devicePixelRatio,
    view: canvas,
 });
 
@@ -32,9 +32,13 @@ function init(assets) {
    containers.push(slotContainer);
    app.stage.addChild(slotContainer.container);
 
+   console.log(document.body.style.scale);
+
    window.addEventListener('resize', () => {
-      app.renderer.resize(canvas.clientWidth, canvas.clientHeight);
-      slotContainer.resize(app.renderer.width, app.renderer.height);
+      const newWidth = canvas.clientWidth * window.devicePixelRatio;
+      const newHeight = canvas.clientHeight * window.devicePixelRatio;
+      app.renderer.resize(newWidth, newHeight);
+      slotContainer.resize(newWidth, newHeight);
    });
 
 

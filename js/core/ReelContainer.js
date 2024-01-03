@@ -73,17 +73,13 @@ export class ReelContainer {
    resize(x, y, w, h) {
       this.width = w;
       this.height = h;
-      this.symbolHeight = this.height / this.symbolsAmount;
+      this.symbolHeight = h / this.symbolsAmount;
       this.y = y;
       this.x = x;
       for (let i = 0; i < this.symbolsAmount + 1; i++) {
          const symbol = this.symbols[i];
-         symbol.resize(0, i * this.symbolHeight, this.width, this.symbolHeight);
+         symbol.resize(0, i * this.symbolHeight, w, this.symbolHeight);
       }
-   }
-
-   startReelRotation() {
-
    }
 
    /**

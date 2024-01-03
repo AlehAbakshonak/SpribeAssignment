@@ -21,14 +21,12 @@ export class SlotContainer {
       this.width = w;
       this.height = h;
       this.reelsAmount = reelsAmount;
-      this.reelWidth = this.width / this.reelsAmount;
+      this.reelWidth = w / this.reelsAmount;
       this.symbolsAmount = symbolsAmount % 2 === 0 ? symbolsAmount + 1 : symbolsAmount;
       this.reels = [];
       this.slotTextures = slotTextures;
-      this.#buildReels();
-
       this.rotationRunning = false;
-      this.reelsRotating = 0;
+      this.#buildReels();
    }
 
    /**
@@ -49,11 +47,11 @@ export class SlotContainer {
    startRotation() {
       if (this.rotationRunning) return;
       this.rotationRunning = true;
-      this.reelsRotating = this.reelsAmount;
+      let reelsRotating = this.reelsAmount;
 
       const reelComplete = () => {
-         this.reelsRotating--;
-         if (this.reelsRotating === 0) this.rotationRunning = false;
+         reelsRotating--;
+         if (reelsRotating === 0) this.rotationRunning = false;
       }
 
       for (let i = 0; i < this.reelsAmount; i++) {

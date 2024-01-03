@@ -3,20 +3,20 @@ body {
     display: flex;
     overflow: hidden;
     flex-direction: column;
-    height: 100vh;
+    height: 100dvh;
     background-color: #020a0f;
 }
 
 header, footer {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     height: 5rem;
     background-color: #020a0f;
 }
 
 canvas {
-    height: calc(100vh - 10rem);
+    height: calc(100dvh - 10rem);
     flex: 1;
     display: block;
 }
@@ -27,11 +27,9 @@ header h1 {
 
 footer button {
     background: linear-gradient(to top, #ffffff, #13b5de);
-
     will-change: scale;
     border: none;
     cursor: pointer;
-    padding: 10px 20px;
     transition: scale 0.5s ease-out,
     color 2s ease-out;
     animation: 2s infinite alternate sun-rise;
@@ -55,11 +53,13 @@ footer button:hover {
 }
 
 header h1, footer button {
+    text-align: center;
+    padding: 10px 20px;
+    margin: 0;
     font-family: Arial, sans-serif;
-    font-size: 42px;
+    font-size: 2rem;
     font-style: italic;
     font-weight: bold;
-    margin: 0;
     -webkit-background-clip: text;
     color: transparent;
 }
