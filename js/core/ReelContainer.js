@@ -13,8 +13,8 @@ export class ReelContainer {
    constructor(x, y, w, h, symbolsAmount, symbolTextures) {
       this.container = new PIXI.Container();
       this.symbolTextures = symbolTextures;
-      this._height = h;
-      this._width = w;
+      this.height = h;
+      this.width = w;
       this.symbolsAmount = symbolsAmount;
       this.symbolHeight = this.height / this.symbolsAmount;
 
@@ -50,22 +50,6 @@ export class ReelContainer {
    set x(value) {
       this._x = value;
       this.container.x = value;
-   }
-
-   get width() {
-      return this._width;
-   }
-
-   set width(value) {
-      this._width = value;
-   }
-
-   get height() {
-      return this._height;
-   }
-
-   set height(value) {
-      this._height = value;
    }
 
    #updateBlur(deltaMS) {

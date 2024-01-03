@@ -10,32 +10,16 @@ export class Symbol {
     * @param {Texture[]} possibleTextures
     */
    constructor(x, y, w, h, possibleTextures) {
-      this._width = w;
-      this._height = h;
-      this._sprite = new PIXI.Sprite(this.#getRandomTexture(possibleTextures));
+      this.width = w;
+      this.height = h;
+      this.sprite = new PIXI.Sprite(this.#getRandomTexture(possibleTextures));
       this._x = x;
       this._y = y;
-      this._sprite.y = y;
-      this._sprite.anchor.set(0.5);
+      this.sprite.y = y;
+      this.sprite.anchor.set(0.5);
       this.randomizedOnThisTurn = false;
       this.#calculateTexturePosition();
       this.buildIdleAnimation(0.02,0.75,1.5);
-   }
-
-   get height() {
-      return this._height;
-   }
-
-   set height(value) {
-      this._height = value;
-   }
-
-   get width() {
-      return this._width;
-   }
-
-   set width(value) {
-      this._width = value;
    }
 
    get x() {
@@ -53,24 +37,16 @@ export class Symbol {
 
    set y(value) {
       this._y = value;
-      this._sprite.y = value;
-   }
-
-   get sprite() {
-      return this._sprite;
-   }
-
-   set sprite(value) {
-      this._sprite = value;
+      this.sprite.y = value;
    }
 
    buildIdleAnimation(rotationRate, yJumpRate, duration) {
-      this._sprite.rotation = -rotationRate;
+      this.sprite.rotation = -rotationRate;
 
       this.animationY = 0;
       this.animation = gsap.timeline({defaults: {yoyo: true, repeat: -1}});
       this.animation.to(
-         this._sprite,
+         this.sprite,
          {
             rotation: rotationRate,
             ease: `power1.inOut`,

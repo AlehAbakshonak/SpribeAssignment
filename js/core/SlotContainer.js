@@ -18,8 +18,8 @@ export class SlotContainer {
       this.container = new PIXI.Container("slot");
       this.container.x = x;
       this.container.y = y;
-      this._width = w;
-      this._height = h;
+      this.width = w;
+      this.height = h;
       this.reelsAmount = reelsAmount;
       this.reelWidth = this.width / this.reelsAmount;
       this.symbolsAmount = symbolsAmount % 2 === 0 ? symbolsAmount + 1 : symbolsAmount;
@@ -29,22 +29,6 @@ export class SlotContainer {
 
       this.rotationRunning = false;
       this.reelsRotating = 0;
-   }
-
-   get width() {
-      return this._width;
-   }
-
-   set width(value) {
-      this._width = value;
-   }
-
-   get height() {
-      return this._height;
-   }
-
-   set height(value) {
-      this._height = value;
    }
 
    /**
